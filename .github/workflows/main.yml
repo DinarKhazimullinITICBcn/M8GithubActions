@@ -28,4 +28,4 @@ jobs:
         curl -s http://localhost:5000/suma/7/10 | grep "17" 
         curl -s http://localhost:5000/resta/10/7 | grep  "3" 
         curl -s http://localhost:5000/multiplica/2/10 | grep  "20" 
-        curl -s http://localhost:5000/divisio/10/2 | grep  "5" 
+        curl -s http://localhost:5000/divideix/10/2 | grep  "5" 
