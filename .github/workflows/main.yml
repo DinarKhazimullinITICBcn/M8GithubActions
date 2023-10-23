@@ -20,7 +20,8 @@ jobs:
 
     - name: Obrim la pagina
       run: |
-        python api_calculadora &
+        python3 api_calculadora &
+        sleep 5
 
     - name: Tests
       run: |
