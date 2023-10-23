@@ -1,0 +1,30 @@
+name: calculadora-api-python
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Fem checkout del repositori
+    - uses: actions/checkout@v4
+
+    - name: Instalacio de python
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Instalacio de Flask y curl
+      run: |
+        sudo apt-get install -y curl
+        pip install flask
+
+    - name: Obrim la pagina
+      run: |
+        python api_calculadora &
+
+    - name: Tests
+      run: |
+        curl -s http://localhost:5000/suma/7/10 | grep -q "17" && echo "exit code = 0" || echo "exit code = 1"
+        curl -s http://localhost:5000/resta/10/7 | grep -q "3" && echo "exit code = 0" || echo "exit code = 1"
+        curl -s http://localhost:5000/multiplica/2/10 | grep -q "20" && echo "exit code = 0" || echo "exit code = 1"
+        curl -s http://localhost:5000/divisio/10/2 | grep -q "5" && echo "exit code = 0" || echo "exit code = 1"
